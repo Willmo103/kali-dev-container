@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get -y install locales && \
     locale-gen en_US.UTF-8 && \
-    apt-get -y install sudo curl vim nano zsh && \
+    apt-get -y install sudo curl vim nano zsh terminator tmu    x && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
