@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - TERM=xterm-256color
-      - USER=will
+      - USER=sparx
     volumes:
       - /c/Users/willm/Documents/GitHub/kali-dev-container/data:/data
       - /c/Users/willm/Documents/GitHub/kali-dev-container/config:/home/sparx/config

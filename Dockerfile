@@ -10,11 +10,9 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get -y install locales && \
     locale-gen en_US.UTF-8 && \
-    apt-get -y install sudo curl && \
-    apt-get -y install sudo nano vim zsh && \
+    apt-get -y install sudo curl vim nano zsh && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 
 # Set default locale
 ENV LANG en_US.UTF-8
