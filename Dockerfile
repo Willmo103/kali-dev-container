@@ -1,30 +1,25 @@
-FROM kalilinux/kali-rolling:latest
+FROM willmo103/sparx-kali:latest
 
-LABEL version="0.2"
-LABEL description="sparx-kali_v0.2 with additional web and API pentesting tools and custom configurations"
+LABEL version="0.3"
+LABEL description="sparx-kali_v0.3"
 
 # Update, upgrade, and install necessary packages
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get -y install locales && \
-    locale-gen en_US.UTF-8 && \
-    apt-get -y install sudo curl vim nano zsh terminator tmu    x && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get -y upgrade
 
 # Set default locale
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-# Create non-root user
-RUN useradd -m -G sudo sparx && \
-    echo "sparx:12345" | chpasswd
+COPY config/.bashrc /home/sparx/.bashrc
+COPY config/.profile /home/sparx/.profile
+COPY config/.zshrc /home/sparx/.zshrc
 
 # Set permissions for configuration files
-RUN chown sparx:sparx /home/sparx/.bashrc /home/sparx/.profile
+RUN chown sparx:sparx /home/sparx/.bashrc /home/sparx/.profile /home/sparx/.zshrc
 
 USER sparx
 WORKDIR /data
